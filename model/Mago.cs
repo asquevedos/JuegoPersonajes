@@ -2,7 +2,7 @@ public class Mago : Personaje
 {
     public int mana { get; set; }
 
-    public Mago(string nombre, double altura, double peso, string genero, int edad, int energia, int salud, Arma arma,int mana) : base(nombre, altura, peso, genero, edad, energia, salud,arma)
+    public Mago(string nombre, double altura, double peso, string genero, int edad, int energia, int salud, List<Arma> armas,int mana) : base(nombre, altura, peso, genero, edad, energia, salud,armas)
     {
         this.mana = mana;
     }
@@ -17,7 +17,7 @@ public class Mago : Personaje
             {
                 Console.WriteLine(this.nombre + " Ataca a " + p.nombre);
                 this.mana -= 10;
-                this.arma.usar(p);
+                this.armaActual.usar(p);
             
             }
             else

@@ -8,9 +8,11 @@ public abstract class Personaje
     private int eregia { get; set; }
     public  int salud { get; set; }
 
-    public Arma arma{get;set;}
+    public List<Arma> armas{get;set;}
 
-    public Personaje(string nombre, double altura, double peso, string genero, int edad, int energia, int salud, Arma arma)
+    public Arma armaActual{get;set;}
+
+    public Personaje(string nombre, double altura, double peso, string genero, int edad, int energia, int salud, List<Arma> armas)
     {
         this.nombre = nombre;
         this.altura = altura;
@@ -19,7 +21,7 @@ public abstract class Personaje
         this.edad = edad;
         this.eregia = energia;
         this.salud = salud;
-        this.arma=arma;
+        this.armas=armas;
     }
 
     public Personaje()
@@ -34,6 +36,18 @@ public abstract class Personaje
         if(this.salud<=0)
         {
             Console.WriteLine(this.nombre+ " está muerto");
+        }
+    }
+
+    public void cambiarArma(string nombreArma)
+    {
+        for(int i=0;i<=this.armas.Count;i++)
+        {
+            if(this.armas[i].nombre==nombreArma)
+            {
+                this.armaActual=this.armas[i];
+                break;
+            }
         }
     }
 

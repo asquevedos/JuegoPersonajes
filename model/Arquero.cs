@@ -2,7 +2,7 @@ public class Arquero : Personaje
 {
     public int numeroFlechas;
 
-    public Arquero(string nombre, double altura, double peso, string genero, int edad, int energia, int salud, Arma arma,int numeroFlechas) : base(nombre, altura, peso, genero, edad, energia, salud,arma)
+    public Arquero(string nombre, double altura, double peso, string genero, int edad, int energia, int salud, List<Arma> armas,int numeroFlechas) : base(nombre, altura, peso, genero, edad, energia, salud,armas)
     {
         this.numeroFlechas = numeroFlechas;
     }
@@ -17,7 +17,7 @@ public class Arquero : Personaje
             {
                 Console.WriteLine(this.nombre + " Ataca a " + personaje.nombre);
                 this.numeroFlechas -= 1;
-                this.arma.usar(personaje);
+                this.armaActual.usar(personaje);
             }
             else
             {
