@@ -2,7 +2,7 @@ public class Mago : Personaje
 {
     public int mana { get; set; }
 
-    public Mago(string nombre, double altura, double peso, string genero, int edad, int energia, int salud, List<Arma> armas,int mana) : base(nombre, altura, peso, genero, edad, energia, salud,armas)
+    public Mago(string nombre, double altura, double peso, string genero, int edad, int energia, int salud, Arma armaActual,Armadura armaduraActual,Inventario inventario,int mana) : base(nombre, altura, peso, genero, edad, energia, salud,armaActual,armaduraActual,inventario)
     {
         this.mana = mana;
     }
@@ -38,6 +38,11 @@ public class Mago : Personaje
     public override void mover()
     {
         Console.WriteLine("Moviendo con magia");
+    }
+
+    public override void aprender()
+    {
+        base.aprender();
     }
 
 

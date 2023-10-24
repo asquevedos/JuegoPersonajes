@@ -8,29 +8,39 @@ public abstract class Personaje
     private int eregia { get; set; }
     public  int salud { get; set; }
 
-    public List<Arma> armas{get;set;}
-
     public Arma armaActual{get;set;}
+    public Armadura armaduraActual{get;set;}
 
-    public Personaje(string nombre, double altura, double peso, string genero, int edad, int energia, int salud, List<Arma> armas)
+    public Inventario inventario;
+
+
+
+    public Personaje()
+    {}
+
+    protected Personaje(string nombre, double altura, double peso, string genero, int edad, int eregia, int salud, Arma armaActual, Armadura armaduraActual, Inventario inventario)
     {
         this.nombre = nombre;
         this.altura = altura;
         this.peso = peso;
         this.genero = genero;
         this.edad = edad;
-        this.eregia = energia;
+        this.eregia = eregia;
         this.salud = salud;
-        this.armas=armas;
+        this.armaActual = armaActual;
+        this.armaduraActual = armaduraActual;
+        this.inventario = inventario;
     }
-
-    public Personaje()
-    {}
 
     public abstract void atacar(Personaje personaje);
     public abstract void defender();
     public abstract void mover();
-    public void danio(int porcentajeDano)
+
+    public virtual void aprender()
+    {
+        Console.WriteLine("Aprendiendo");
+    }
+    public virtual void danio(int porcentajeDano)
     {
         this.salud -=porcentajeDano;
         if(this.salud<=0)
@@ -39,15 +49,39 @@ public abstract class Personaje
         }
     }
 
-    public void cambiarArma(string nombreArma)
+    public virtual void cambiarArma(string nombreArma)
     {
-        for(int i=0;i<=this.armas.Count;i++)
+        for(int i=0;i<=this.inventario.armas.Count;i++)
         {
-            if(this.armas[i].nombre==nombreArma)
+            if(this.inventario.armas[i].nombre==nombreArma)
             {
-                this.armaActual=this.armas[i];
+                this.armaActual=this.inventario.armas[i];
                 break;
             }
+        }
+    }
+
+        public virtual void cambiarArmadura(string nombreArmadura)
+    {
+        for(int i=0;i<=this.inventario.armaduras.Count;i++)
+        {
+            if(this.inventario.armaduras[i].nombre==nombreArmadura)
+            {
+                this.armaduraActual=this.inventario.armaduras[i];
+                break;
+            }
+        }
+    }
+
+    public void listarArmas()
+    {
+        int cont =0;
+        Console.WriteLine("Por favor Ingrese la arma elegida");
+        foreach(Arma arma in this.inventario.armas)
+        {
+            
+            Console.WriteLine("Opción "+cont+" "+arma.nombre);
+            cont++;
         }
     }
 

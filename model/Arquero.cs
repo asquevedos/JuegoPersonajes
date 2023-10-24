@@ -2,7 +2,7 @@ public class Arquero : Personaje
 {
     public int numeroFlechas;
 
-    public Arquero(string nombre, double altura, double peso, string genero, int edad, int energia, int salud, List<Arma> armas,int numeroFlechas) : base(nombre, altura, peso, genero, edad, energia, salud,armas)
+    public Arquero(string nombre, double altura, double peso, string genero, int edad, int energia, int salud, Arma armaActual,Armadura armaduraActual,Inventario inventario,int numeroFlechas) : base(nombre, altura, peso, genero, edad, energia, salud,armaActual,armaduraActual,inventario)
     {
         this.numeroFlechas = numeroFlechas;
     }
