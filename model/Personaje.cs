@@ -1,4 +1,4 @@
-public abstract class Personaje 
+public abstract class Personaje: IClonable<Personaje> 
 {
     public string nombre { get; set; }
     public double altura{ get; set; }
@@ -84,6 +84,13 @@ public abstract class Personaje
             cont++;
         }
     }
+
+    
+    public Personaje clonar()
+    {
+        return (Personaje)this.MemberwiseClone();
+    }
+
 
 
 }

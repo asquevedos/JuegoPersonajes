@@ -1,6 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
 //Armas de Legolas
+
+ConfiguracionJuego configuracion;
+
+
 Inventario inventarioMago= new Inventario();
+
 
 Arma arma4= new Arma("Baculo de Gandalf", 100, 10, 10,"Baculo");
 Arma arma5= new Arma("Espada", 100, 6, 10,"Espada");
@@ -26,6 +31,13 @@ inventarioMago.armaduras=armadurasMago;
 inventarioMago.pociones=pocionesMago;
 
 Personaje mago = new Mago("Gandalf", 1.80, 80, "Masculino", 100, 100, 100,null,null,inventarioMago,120);
+List<Mago> magosClonados = new List<Mago>();
+for(int i=0;i<=10;i++)
+{
+    Personaje magoClonado = mago.clonar();
+    magosClonados.Add((Mago)magoClonado);
+}
+
 
 mago.cambiarArma("Baculo de Gandalf");
 mago.cambiarArmadura("Armadura magica");
