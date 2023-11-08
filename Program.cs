@@ -4,6 +4,10 @@
 ConfiguracionJuego configuracion;
 
 
+Fabrica fabrica = new FabricaPersonaje();
+Mago mago5 = (Mago)fabrica.crearPersonaje("Mago");
+
+
 Inventario inventarioMago= new Inventario();
 
 
