@@ -12,7 +12,6 @@ public class FabricaPersonaje : Fabrica
             armasMago.Add(arma4);
             armasMago.Add(arma5);
             p = new Mago("Gandalf", 1.80, 80, "Masculino", 100, 100, 100,null,null,inventarioMago,120);
-
         }
 
         return p;

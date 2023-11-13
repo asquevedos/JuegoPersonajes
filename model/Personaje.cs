@@ -8,6 +8,8 @@ public abstract class Personaje: IClonable<Personaje>
     private int eregia { get; set; }
     public  int salud { get; set; }
 
+    public IEstrategiaCombate estrategiaCombate{get;set;}
+
     public Arma armaActual{get;set;}
     public Armadura armaduraActual{get;set;}
 
@@ -89,6 +91,10 @@ public abstract class Personaje: IClonable<Personaje>
     public Personaje clonar()
     {
         return (Personaje)this.MemberwiseClone();
+    }
+    public void combatir(Personaje personaje, Personaje enemigo)
+    {
+        estrategiaCombate.execute(personaje,enemigo);
     }
 
 

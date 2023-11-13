@@ -5,7 +5,13 @@ ConfiguracionJuego configuracion;
 
 
 Fabrica fabrica = new FabricaPersonaje();
-Mago mago5 = (Mago)fabrica.crearPersonaje("Mago");
+
+
+
+
+
+
+
 
 
 Inventario inventarioMago= new Inventario();
@@ -47,6 +53,16 @@ mago.cambiarArma("Baculo de Gandalf");
 mago.cambiarArmadura("Armadura magica");
 mago.listarArmas();
 Arma arma1 = new Arma("Daga", 100, 10, 10,"Daga");
+
+
+AggressiveStrategy estrategiaAgresiva= new AggressiveStrategy();
+DefensiveStrategy estrategiaDefensiva= new DefensiveStrategy();
+
+
+Mago mago5 = (Mago)fabrica.crearPersonaje("Mago");
+
+mago5.estrategiaCombate=estrategiaAgresiva;
+mago5.estrategiaCombate.execute(mago5,mago );
 /*
 Arma arma1 = new Arma("Daga", 100, 10, 10,"Daga");
 Arma arma2 = new Arma("Arco rompe viento", 100, 1, 10,"Arco");
