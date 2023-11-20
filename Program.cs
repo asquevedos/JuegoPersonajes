@@ -1,19 +1,30 @@
 ﻿// See https://aka.ms/new-console-template for more information
 //Armas de Legolas
+FabricaPersonaje fabrica = new FabricaPersonaje();
 
-ConfiguracionJuego configuracion;
+Mago mago1 = (Mago)fabrica.crearPersonaje("Mago");
+Mago mago2 = (Mago)fabrica.crearPersonaje("Mago");
+mago2.nombre ="Mago Blanco";
 
-
-Fabrica fabrica = new FabricaPersonaje();
-
-
-
-
-
+Mago mago3 = (Mago)fabrica.crearPersonaje("Mago");
+mago2.nombre ="Mago negro";
 
 
 
 
+EstadoPersonajeObserver estadoObserver = new EstadoPersonajeObserver();
+mago1.attach(estadoObserver);
+mago2.attach(estadoObserver);
+mago3.attach(estadoObserver);
+
+
+mago2.atacar(mago1);
+//mago.attach(estadoObserver);
+
+
+
+
+/*
 Inventario inventarioMago= new Inventario();
 
 
@@ -63,7 +74,7 @@ Mago mago5 = (Mago)fabrica.crearPersonaje("Mago");
 
 mago5.estrategiaCombate=estrategiaAgresiva;
 mago5.estrategiaCombate.execute(mago5,mago );
-/*
+
 Arma arma1 = new Arma("Daga", 100, 10, 10,"Daga");
 Arma arma2 = new Arma("Arco rompe viento", 100, 1, 10,"Arco");
 Arma arma3 = new Arma("Espada", 100, 6, 10,"Espada");

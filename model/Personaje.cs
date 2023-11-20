@@ -1,4 +1,4 @@
-public abstract class Personaje: IClonable<Personaje> 
+public abstract class Personaje: IClonable<Personaje>,ISubject 
 {
     public string nombre { get; set; }
     public double altura{ get; set; }
@@ -8,12 +8,16 @@ public abstract class Personaje: IClonable<Personaje>
     private int eregia { get; set; }
     public  int salud { get; set; }
 
+    
+
     public IEstrategiaCombate estrategiaCombate{get;set;}
 
     public Arma armaActual{get;set;}
     public Armadura armaduraActual{get;set;}
 
     public Inventario inventario;
+
+    public List<IObserver> observers = new List<IObserver>();
 
 
 
@@ -45,9 +49,11 @@ public abstract class Personaje: IClonable<Personaje>
     public virtual void danio(int porcentajeDano)
     {
         this.salud -=porcentajeDano;
+        notify();
         if(this.salud<=0)
         {
             Console.WriteLine(this.nombre+ " está muerto");
+            
         }
     }
 
@@ -95,6 +101,25 @@ public abstract class Personaje: IClonable<Personaje>
     public void combatir(Personaje personaje, Personaje enemigo)
     {
         estrategiaCombate.execute(personaje,enemigo);
+    }
+
+
+    public void attach(IObserver observer)
+    {
+        this.observers.Add(observer);
+    }
+
+    public void detach(IObserver observer)
+    {
+        observers.Remove(observer);
+    }
+
+    public void notify()
+    {
+        foreach (IObserver observer in observers)
+        {
+            observer.update(this);
+        }
     }
 
 

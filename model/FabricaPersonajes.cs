@@ -11,7 +11,9 @@ public class FabricaPersonaje : Fabrica
             List<Arma> armasMago=new List<Arma>();
             armasMago.Add(arma4);
             armasMago.Add(arma5);
+            inventarioMago.armas=armasMago;
             p = new Mago("Gandalf", 1.80, 80, "Masculino", 100, 100, 100,null,null,inventarioMago,120);
+            p.cambiarArma("Baculo de Gandalf");
         }
 
         return p;
